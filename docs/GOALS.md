@@ -2,13 +2,13 @@
 
 ## Features
 
-1. Primary features are the main goal for implementing the first workable version of the project. 
+1. Minimum Viable Product or the primary features are the main goal for implementing the first workable version of the project. 
 
 2. Secondary features are goals that may not be implemented in the first version due to added level of complexity, but may still be realistic to implement once the primary features are successfully implemented within the project.
 
 3. Complex features are future hopes and ideals for the project but require significally more time and dedication to implement due to requiring development at a much larger scale. 
 
-### Primary Features
+### Minimum Viable Product
 
 + Take in a sound wave as input as a .wav file
 + Through the data training, the machine learning decision tree algorithm finds the best fit visual association
