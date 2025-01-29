@@ -38,3 +38,34 @@
 
 + Outputs a color and hue combination based on the frequency and pitch of the sound input
   + As a visual learner, I want to see what colors are produced based off my sound specs, so I can learn about music that works best for me.
+
+## File Hierarchy
+
+Note: For simplicity, Python will be used first and if possible, rust-lang integration will be added in the future.
+
+:exclamation: : This setup may be subject to change.
+
+```text
+.
+├── assets/
+│   └── training_data.csv
+├── docs/
+│   └── GOALS.md
+├── utils/
+│   ├── audiokit/
+│   │   ├── __init__.py
+│   │   └── sound.py
+│   ├── chromakit/
+│   │   ├── __init__.py
+│   │   └── colors.py
+│   ├── __init__.py
+│   └── tree.py
+├── tests/
+│   ├── __init__.py
+│   ├── test_audio.py
+│   └── test_colors.py
+├── LICENSE
+├── requirements.txt
+├── references.txt
+└── README.md
+```
