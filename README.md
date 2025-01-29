@@ -71,8 +71,10 @@ For the list of goals and plan for the project, see [the Docs directory](./docs)
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=style-plastic-green&logo=python&logoColor=ffdd54) ![Rust](https://img.shields.io/badge/Rust-Language-orange)
 
-+ Python includes useful libraries for working with visual data and machine learning algorithms
-+ Rust has a great integrated module system that is useful for encapsulation.
++ Python includes useful libraries for working with visual data and machine learning algorithms.
++ Rust has a great integrated module system that is useful for encapsulation and is a useful language for safe coding practices.
+
++ For simplicity, the program development will focus on python first and integrate rust later if possible.
 
 <!-- omit in toc -->
 ## License
