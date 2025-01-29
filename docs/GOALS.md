@@ -41,7 +41,7 @@
 
 ## File Hierarchy
 
-Note: For simplicity, Python will be used first and if possible, rust-lang integration will be added in the future.
+Note: For simplicity, Python will be used for the initial design and if possible, rust-lang integration will be added in the future.
 
 :exclamation: : This setup may be subject to change.
 
@@ -69,3 +69,22 @@ Note: For simplicity, Python will be used first and if possible, rust-lang integ
 ├── references.txt
 └── README.md
 ```
+
++ ./docs/ -- Includes the setup plan and program documentation.
++ ./requirements.txt -- Python recommendation for library or other system requirements needed to run the program.
++ ./utils/ [^1] -- Holds the source code for the main program.
+  + utils/audiokit/ [^2] -- Module focused on audio functionality, such as creating a .wav file for input.
+  + utils/chromakit/ -- Module focused on visual functionality such as color output.
+  + utils/tree.py [^3] -- Holds the decision tree learning algorithm.
++ ./tests/ [^4] -- Python testing module to run tests for the individual models making sure each feature functions properly.
++ ./references.txt [^5] -- Current file for listing references.
+
+[^1]: Not sure if `utils` or `src` is a more appropriate name for this directory.
+
+[^2]: The current file hierarchy is a sample example for both the `audiokit` and `chromakit` modules. Depending on development structure, there may be more files added.
+
+[^3]: More research of the file structure may be required to determine if having the machine learning algorithm file should be at the root of the `utils` directory or in a sub-module.
+
+[^4]: Tests will likely not be limited to colors and audio testing, but may also include a file for testing the decision tree.
+
+[^5]: This is temporary. Following up on researching Github's `CITATION` file uses.
