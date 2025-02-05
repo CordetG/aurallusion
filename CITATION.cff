@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Gula"
+  given-names: "Cordet"
+  orcid: "https://orcid.org/0009-0003-9518-7022"
+title: "Aurallusion"
+version: 0.1.0
+date-released: 2025-01-19
+url: "https://github.com/CordetG/aurallusion"
