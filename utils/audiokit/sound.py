@@ -19,8 +19,7 @@ class Wave:
             duration, 
             frequency, 
             sampleRate, 
-            wavName
-        ) -> None:
+            wavName) -> None:
         
         self.channelsPerFrame: int = int(channelsPerFrame)
         self.sampleSizeBits = eval(sampleSizeBits)
@@ -31,8 +30,7 @@ class Wave:
         self.waveName: str = wavName
     # end def
     
-    '''Sinusoidal equation at time (t):
-    s(t)=a*sin(2pi*freq*t)'''
+    '''Sinusoidal equation at time (t): s(t)=a*sin(2pi*freq*t)'''
     def sineWave(self, time) -> int:
         return int(
                 self.amplitude 
@@ -41,6 +39,7 @@ class Wave:
                 * (time/self.sampleRate)))
     # end def
     
+    # TODO: Extend function to create samples from any generic wave.
     '''Generates sinusoidal wave as array of samples'''
     def generateSamples(self) -> np.ndarray:
         
@@ -55,6 +54,10 @@ class Wave:
         
         return sampleList
     # end def
+    
+    # TODO: Write samples to .wav file
+    
+    # TODO: Play .wav file audio
     
 # end class
 
