@@ -31,21 +31,26 @@ class Wave:
         self.waveName: str = wavName
     # end def
     
-    '''Generates sinusoidal wave given the equation:
+    '''Sinusoidal equation at time (t):
     s(t)=a*sin(2pi*freq*t)'''
+    def sineWave(self, time) -> int:
+        return int(
+                self.amplitude 
+                * math.sin(((2*math.pi) 
+                * self.frequency)
+                * (time/self.sampleRate)))
+    # end def
+    
+    '''Generates sinusoidal wave as array of samples'''
     def generateSamples(self) -> np.ndarray:
         
         totalSamples: int = self.duration * self.sampleRate
         sampleList = np.empty(shape=totalSamples, dtype=np.int16)
         
-        for aSample in range(totalSamples):
-            newSampleData: int = int(
-                self.amplitude 
-                * math.sin(((2*math.pi) 
-                * self.frequency)
-                * (aSample/self.sampleRate)))
+        for t in range(totalSamples):
             
-            sampleList[aSample] = newSampleData
+            newSampleData: int = self.sineWave(t)
+            sampleList[t] = newSampleData
         # end for
         
         return sampleList
