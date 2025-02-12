@@ -6,6 +6,7 @@
 from scipy.io import wavfile as scwave
 import math
 import numpy as np
+import sounddevice as sdevice
 
 class Wave:
     '''A wave object uses the attributes of a sound wave
@@ -55,9 +56,24 @@ class Wave:
         return sampleList
     # end def
     
-    # TODO: Write samples to .wav file
+    '''Write the .wav files'''
+    def writeWav(
+        self, 
+        WavData) -> None:
+        
+        scwave.write(
+            filename=self.waveName,
+            rate=self.sampleRate, 
+            data=WavData
+        )
+    # end def
     
-    # TODO: Play .wav file audio
+    '''Play Audio directly to computer speakers'''
+    def playAudio(self, audioData) -> None:
+        
+        print("Playing ", self.waveName.replace('.wav', ''), " data...")
+        sdevice.play(data=audioData, samplerate=self.sampleRate, blocking=True)
+    # end def
     
 # end class
 
