@@ -59,12 +59,12 @@ class Wave:
     '''Write the .wav files'''
     def writeWav(
         self, 
-        WavData) -> None:
+        wavData) -> None:
         
         scwave.write(
             filename=self.waveName,
             rate=self.sampleRate, 
-            data=WavData
+            data=wavData
         )
     # end def
     
