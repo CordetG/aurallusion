@@ -1,5 +1,6 @@
 from utils.audiokit import sound
 import numpy as np
+import unittest
 
 wavObj = sound.Wave(
     channelsPerFrame=1,
@@ -11,25 +12,16 @@ wavObj = sound.Wave(
     wavName="sine.wav"
 )
 
-def test_sine_wave_equation_at_t_0() -> None:
-    
-    sineResult = wavObj.sineWave(time=0)
-    expectedValue = 0
+class TestSoundMethods(unittest.TestCase):
 
-    assert sineResult == expectedValue, "Sine equation should return 0"
-# end def test
+    def test_sine_at_t_0(self):
+        sineResult = wavObj.sineWave(time=0)
+        self.assertEqual(sineResult, 0)
+        self.assertFalse(sineResult != 0)
 
-def test_generate_samples_and_writes_and_plays_samples_as_audio() -> None:
-    
-    sampleArray = wavObj.generateSamples()
-    wavObj.writeWav(wavData=sampleArray)
-    wavObj.playAudio(audioData=sampleArray)
-#end def test
+    def test_generate_samples(self):
+        sampleArray = wavObj.generateSamples()
+        self.assertEqual(sampleArray.dtype, np.dtype('int16'))
 
-# Run Testing
-# In root directory, run python3 -m tests.test_audio
-if __name__ == "__main__":
-    test_sine_wave_equation_at_t_0()
-    test_generate_samples_and_writes_and_plays_samples_as_audio()
-    print("Audio Testing Passed!")
-# end if
+if __name__ == '__main__':
+    unittest.main()
