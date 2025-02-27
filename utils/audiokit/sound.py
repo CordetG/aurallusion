@@ -60,9 +60,12 @@ class Wave:
     def writeWav(
         self, 
         wavData) -> None:
+        directory = './assets'  # Replace with your desired directory
+        filename = self.waveName
+        full_path = f'{directory}/{filename}'
         
         scwave.write(
-            filename=self.waveName,
+            full_path,
             rate=self.sampleRate, 
             data=wavData
         )
