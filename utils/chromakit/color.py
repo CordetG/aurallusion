@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 
 class Color:
-    '''Manage the color values and calculations using both
-    the visible light spectrum and luminosity to create colors.
+    '''Create a color using the visible light spectrum and luminosity.
     -----------
     Attributes:
         hue -- Normalized hue of degree value
