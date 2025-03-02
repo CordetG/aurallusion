@@ -43,6 +43,12 @@ In an attempt to keep the data as objective as possible, the data was used relat
 
 To add more sound analysis, audio pitch plays a role relative to the luminous intensity of light. Note C has a low intensity pitch and is coorelated with low luminous intensity of light, whereas high luminous intensity is coorelated with the high intensity pitch of note of note B. In this project, black and white are not explicitely used but rather the lightest or darkest shade of a cooresponding color to represent the high or low pitch relative to the frequency.
 
+---
+
+:information_source: **Disclaimer:** While awerallusion was created with the intention of being objective by using scientific measurements and calculations, it is important to note that synesthesia experiences are highly subjective and vary depending on a synesthete's own personal perception. With chromesthesia, for example, a C note can be represent violet to one person and green to another. In addition, color naming conventions vary between different cultures and languages. 
+
+The author does not claim the color naming schemes or the experience of chromesthesia used with awerallusion as a fact, but rather to be used with a fun tool that creates an association between sound and color and can be used to help visual thinkers learn basic music theory.
+
 <!-- omit in toc -->
 ### Outcome
 
