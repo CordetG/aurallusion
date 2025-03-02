@@ -59,6 +59,20 @@ For the list of goals and plan for the project, see [the Docs directory](./docs)
 <!-- omit in toc -->
 ### Dataset Model
 
++ Data Collection for color
++ Determining the values to use from the visible light spectrum
++ Greyscale values
++ How to calculate additional RGB to Hz values
+
+<!--To do: don't forget to add ref-->
+From the visible light spectrum, a predetermined chart was used for a value of wavelengths in nanometers and a nanometer-to-RGB calculator was used to determine the base color values. 
+
+The visible light spectrum luminosity value represented 50% luminosity and was located at the mean Hz sound frequency between notes F and F#. 
+
+Greyscale values represented to notes of a single octave. The greyscale was determined by a pre-set value of RGB(20, 20, 20), (40, 40, 40), ... , (240,240,240), repctively. 
+
+The formula used for the mapping all other color data was through linear interpolation where **x = &sum; r[i], g{i}, b,[i].**
+
 ![Table showing color and sound association](./assets/color-sound-table.png)
 
 <!-- omit in toc -->
