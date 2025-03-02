@@ -29,3 +29,7 @@ def input_error():
 def input_range():
     pass
 # end def
+
+def read_input():
+    pass
+# end def
