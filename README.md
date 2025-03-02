@@ -71,7 +71,26 @@ The visible light spectrum luminosity value represented 50% luminosity and was l
 
 Greyscale values represented to notes of a single octave. The greyscale was determined by a pre-set value of RGB(20, 20, 20), (40, 40, 40), ... , (240,240,240), repctively. 
 
-The formula used for the mapping all other color data was through linear interpolation where **x = &sum; r[i], g{i}, b,[i].**
+The formula used for the mapping all other color data was through linear interpolation where **x = &sum; $r_i, g_i, b_i$.**
+
+```text
+Example:
+max = RGB(255,255,255)
+
+For luminsity with RGB = (20,20,20)
+x = 20 + 20 + 20
+x = 60
+max = 255 + 255 + 255
+max = 765
+luminosity = 60/765 = 7.8%
+
+For red hue = 19% at 7.8% luminosity
+(7.8%/50%)*19% = 3.0% of dark red (780nm)
+  where the default dark red at 100% saturation and 50% luminosity is represented as HSL (0,1,0.19)
+  -- hue = 0 degrees, 1 = 100% saturation, 0.19 = 19% lightness
+
+Note: Values are rounded to the nearest 10th.
+```
 
 ![Table showing color and sound association](./assets/color-sound-table.png)
 
