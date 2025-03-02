@@ -10,3 +10,13 @@ def save_input():
 # returns array of sample values
 def generate_wave_samples():
     pass
+
+# --- manage data for tree ---
+def import_data():
+    pass
+# end def
+
+def split_dataset():
+    pass
+# end def
+# -------
