@@ -16,6 +16,9 @@ from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
 import matplotlib.pyplot as plt
 
 class DecisionTreeModel:
+    '''Regression Decision Tree Model'''
+    
+    # Random state set to 100 for reproducibility
     def __init__(self, random_state=100):
         self.model = DecisionTreeRegressor(random_state=random_state)
     # end def
