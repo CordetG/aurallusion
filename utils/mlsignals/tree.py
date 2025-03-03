@@ -12,15 +12,24 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import confusion_matrix, accuracy_score, classification_report
 from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
-import matplotlib.pyplot as plt
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.multioutput import MultiOutputRegressor
+import matplotlib.pyplot as plot
 
 class DecisionTreeModel:
-    '''Regression Decision Tree Model'''
+    '''Multi-Output Decision Tree Regressor Model'''
     
     # Random state set to 100 for reproducibility
-    def __init__(self, random_state=100):
-        self.model = DecisionTreeRegressor(random_state=random_state)
-    # end def
+    def __init__(self, criterion='friedman_mse', random_state=100, depth=3):
+        self.model = DecisionTreeRegressor(
+                        criterion=criterion,
+                        random_state=random_state, 
+                        max_depth=depth
+                    )
+        
+        self.multi_model = MultiOutputRegressor(self.model)
+    # end __init__ def
+    
+    
     
 #end class
