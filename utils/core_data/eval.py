@@ -27,10 +27,12 @@ def load_data(csv_file) -> pd.DataFrame:
     return None
 # end def
 
-def split_dataset(data_frame):
+
+# features/target = 1d array -> x/y = 2d array
+def split_dataset(data_frame, features, target_vars):
     
-    x = data_frame.values[1:, 3:7]
-    y = data_frame.values[1:, 0:3]
+    x = data_frame[features]
+    y = data_frame[target_vars]
     
     x_train, x_test, y_train, y_test = train_test_split(
     x, y, test_size=0.1, random_state=100)
