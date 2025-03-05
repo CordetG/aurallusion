@@ -43,6 +43,12 @@ In an attempt to keep the data as objective as possible, the data was used relat
 
 To add more sound analysis, audio pitch plays a role relative to the luminous intensity of light. Note C has a low intensity pitch and is coorelated with low luminous intensity of light, whereas high luminous intensity is coorelated with the high intensity pitch of note of note B. In this project, black and white are not explicitely used but rather the lightest or darkest shade of a cooresponding color to represent the high or low pitch relative to the frequency.
 
+---
+
+:information_source: **Disclaimer:** While awerallusion was created with the intention of being objective by using scientific measurements and calculations, it is important to note that synesthesia experiences are highly subjective and vary depending on a synesthete's own personal perception. With chromesthesia, for example, a C note can be represent violet to one person and green to another. In addition, color naming conventions vary between different cultures and languages. 
+
+The author does not claim the color naming schemes or the experience of chromesthesia used with awerallusion as a fact, but rather to be used with a fun tool that creates an association between sound and color and can be used to help visual thinkers learn basic music theory.
+
 <!-- omit in toc -->
 ### Outcome
 
@@ -58,6 +64,39 @@ For the list of goals and plan for the project, see [the Docs directory](./docs)
 
 <!-- omit in toc -->
 ### Dataset Model
+
++ Data Collection for color
++ Determining the values to use from the visible light spectrum
++ Greyscale values
++ How to calculate additional RGB to Hz values
+
+<!--To do: don't forget to add ref-->
+From the visible light spectrum, a predetermined chart was used for a value of wavelengths in nanometers and a nanometer-to-RGB calculator was used to determine the base color values. 
+
+The visible light spectrum luminosity value represented 50% luminosity and was located at the mean Hz sound frequency between notes F and F#. 
+
+Greyscale values represented to notes of a single octave. The greyscale was determined by a pre-set value of RGB(20, 20, 20), (40, 40, 40), ... , (240,240,240), repctively. 
+
+The formula used for the mapping all other color data was through linear interpolation where **x = &sum; $r_i, g_i, b_i$.**
+
+```text
+Example:
+max = RGB(255,255,255)
+
+For luminsity with RGB = (20,20,20)
+x = 20 + 20 + 20
+x = 60
+max = 255 + 255 + 255
+max = 765
+luminosity = 60/765 = 7.8%
+
+For red hue = 19% at 7.8% luminosity
+(7.8%/50%)*19% = 3.0% of dark red (780nm)
+  where the default dark red at 100% saturation and 50% luminosity is represented as HSL (0,1,0.19)
+  -- hue = 0 degrees, 1 = 100% saturation, 0.19 = 19% lightness
+
+Note: Values are rounded to the nearest 10th.
+```
 
 ![Table showing color and sound association](./assets/color-sound-table.png)
 
