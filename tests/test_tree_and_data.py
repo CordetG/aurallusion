@@ -1,18 +1,22 @@
 #!/usr/bin/python3
 
 import pytest
+import unittest
+import pandas as pd
 from utils.core_data import eval
 from utils.mlsignals import tree
 
-
-
-
-class TestData:
+class TestData(unittest.TestCase):
     
-    dataObj = eval.TreeData()
+    def setUp(self):
+        self.data_obj = eval.TreeData()
+        self.none_data_obj = eval.TreeData(csv_file='tests/empty.csv')
     
     def test_loading_data_file(self):
-        pass
+
+        none_df = self.none_data_obj.load_data()
+        
+        self.assertIsNone(none_df, None)
     # end def
     
     def test_ml_data_split(self):
@@ -50,8 +54,9 @@ class TestTree:
 
 
 # Run Testing
-# In root directory, run python3 -m tests.test_audio
+# In root directory, run python3 -m tests.test_tree_and_data
 if __name__ == "__main__":
+    #unittest.main()
     print("Data Processing Tests Passed!")
     print("Decision Tree Testing Passed!")
 # end if

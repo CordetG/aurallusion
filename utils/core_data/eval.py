@@ -20,14 +20,14 @@ class TreeData:
     def __init__(self, csv_file='./audio_color_data.csv'):
         self.data = csv_file
     
-    def load_data(self) -> pd.DataFrame:
+    def load_data(self):
         try:
-            df = pd.read_csv(self.csv_file)
+            df = pd.read_csv(self.data)
             
             return df
             
         except pd.errors.EmptyDataError:
-            print(f"Error: The file '{self.csv_file}' is empty or cannot be read.")
+            print(f"Error: The file '{self.data}' is empty or cannot be read.")
             
         return None
     # end def
