@@ -33,6 +33,9 @@ class TreeData:
     # end def
 
 
+    # data_frame -> df returned from load_data
+    # features = ['soundFreq','octave','note']
+    # target_vars = ['r','g','b']
     # features/target = 1d array -> x/y = 2d array
     def split_dataset(self, data_frame, features, target_vars):
         
