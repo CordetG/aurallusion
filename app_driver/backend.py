@@ -22,7 +22,6 @@ def run_ml_utils():
     ml_model_obj.calculate_accuracy()
     
     ml_model_obj.display_results()
-    ml_model_obj.plot_data()
 
 
 if __name__ == "__main__":

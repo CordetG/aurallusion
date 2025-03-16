@@ -14,19 +14,17 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error
 import numpy as np
-#from sklearn.preprocessing import MinMaxScaler
 import matplotlib.pyplot as plt
 
 class DecisionTreeModel:
     '''Multi-Output Decision Tree Regressor Model'''
     
-    # Random state set to 100 for reproducibility
     def __init__(
             self, 
             x_train=None, y_train=None,
             x_test=None, y_test=None,
             scaled_model=None,
-            criterion='friedman_mse', random_state=100, depth=3,
+            criterion='friedman_mse', random_state=93, depth=3,
             predictions=None, mse=None
         ):
         
@@ -46,7 +44,12 @@ class DecisionTreeModel:
     # end __init__ def
     
     # Create new instance of the decision tree
-    def new_model(self, new_criterion, new_rand, new_depth):
+    def new_model(
+            self, 
+            new_criterion, 
+            new_rand, 
+            new_depth
+        ):
         
         return DecisionTreeModel(
                     criterion=new_criterion,
@@ -64,7 +67,13 @@ class DecisionTreeModel:
                     ])
     # end def
     
-    def read_data(self, x_train, y_train, x_test, y_test):
+    def read_data(
+            self, 
+            x_train, 
+            y_train, 
+            x_test, 
+            y_test
+        ) -> None:
         
         self.x_train = x_train
         self.y_train = y_train
@@ -74,15 +83,8 @@ class DecisionTreeModel:
     
     # fitted data
     def train(self):
-        # Normalize the features (X_train) and targets (y_train)
-        #feature_scaler = MinMaxScaler()
-        #target_scaler = MinMaxScaler()
-
-        #self.x_train = feature_scaler.fit_transform(self.x_train)
-        #self.y_train = target_scaler.fit_transform(self.y_train)
         
         self.scaled_data.fit(self.x_train, self.y_train)
-        #print("Shape of y_train:", self.y_train.shape)
     # end def
     
     # predict after fitting data
@@ -95,22 +97,19 @@ class DecisionTreeModel:
     def calculate_accuracy(self):
         
         self.mse = mean_squared_error(self.y_test, self.predictions)
-        mse = self.mse
-        
-        return mse
     # end def
     
     def display_results(self):
-        #print('Actual values:', self.y_test)
-        #print('Predicted values:', self.predictions)
-        
-        #print('Predictions for RGB values on test data:')
-        #print(self.predictions)
         
         print(f'Mean Squared Error (MSE) for RGB prediction: {self.mse}')
+        
+        self.plot_data()
     # end def
     
     def plot_data(self):
+        # TODO: Find a better graph to display results & move to core_data/eval
+        
+        # Some matplotlib syntax help from chatGPT
         plt.figure(figsize=(12, 6))
 
         # x-axes = 'r','g','b' values between 0-255
@@ -122,12 +121,14 @@ class DecisionTreeModel:
         plt.title("Distribution of Actual vs Predicted Values")
 
         plt.subplot(1, 2, 2)
-        # Check the residuals (difference between actual and predicted)
-        residuals = self.y_test - self.predictions
-        plt.hist(residuals.to_numpy().ravel(), bins=50, color='green', alpha=0.7)
-        plt.title("Residuals (Actual - Predicted)")
+        # Check the delta (difference between actual and predicted)
+        deltas = self.y_test - self.predictions
+        plt.hist(deltas.to_numpy().ravel(), bins=50, color='green', alpha=0.7)
+        plt.title("Deltas (Actual - Predicted)")
 
         plt.tight_layout()
         plt.show()
+        
+    # end def
     
 #end class

@@ -24,8 +24,6 @@ class TreeData:
         
         try:
             df = pd.read_csv(self.data, header=0)
-            #print(df.columns)
-            #print(df.head())
             
             return df
             
