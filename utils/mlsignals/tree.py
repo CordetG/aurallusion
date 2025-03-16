@@ -14,6 +14,8 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error
 import numpy as np
+#from sklearn.preprocessing import MinMaxScaler
+import matplotlib.pyplot as plt
 
 class DecisionTreeModel:
     '''Multi-Output Decision Tree Regressor Model'''
@@ -72,8 +74,15 @@ class DecisionTreeModel:
     
     # fitted data
     def train(self):
+        # Normalize the features (X_train) and targets (y_train)
+        #feature_scaler = MinMaxScaler()
+        #target_scaler = MinMaxScaler()
+
+        #self.x_train = feature_scaler.fit_transform(self.x_train)
+        #self.y_train = target_scaler.fit_transform(self.y_train)
+        
         self.scaled_data.fit(self.x_train, self.y_train)
-        print("Shape of y_train:", self.y_train.shape)
+        #print("Shape of y_train:", self.y_train.shape)
     # end def
     
     # predict after fitting data
@@ -86,16 +95,39 @@ class DecisionTreeModel:
     def calculate_accuracy(self):
         
         self.mse = mean_squared_error(self.y_test, self.predictions)
+        mse = self.mse
+        
+        return mse
     # end def
     
     def display_results(self):
-        print('Actual values:', self.y_test)
-        print('Predicted values:', self.predictions)
+        #print('Actual values:', self.y_test)
+        #print('Predicted values:', self.predictions)
         
-        print('Predictions for RGB values on test data:')
-        print(self.predictions)
+        #print('Predictions for RGB values on test data:')
+        #print(self.predictions)
         
         print(f'Mean Squared Error (MSE) for RGB prediction: {self.mse}')
     # end def
+    
+    def plot_data(self):
+        plt.figure(figsize=(12, 6))
+
+        # x-axes = 'r','g','b' values between 0-255
+        # y-axes = frequency of certain values occur
+        plt.subplot(1, 2, 1)
+        plt.hist(self.y_test.to_numpy().ravel(), bins=50, color='blue', alpha=0.5, label="Actual")
+        plt.hist(self.predictions.ravel(), bins=50, color='red', alpha=0.5, label="Predicted")
+        plt.legend()
+        plt.title("Distribution of Actual vs Predicted Values")
+
+        plt.subplot(1, 2, 2)
+        # Check the residuals (difference between actual and predicted)
+        residuals = self.y_test - self.predictions
+        plt.hist(residuals.to_numpy().ravel(), bins=50, color='green', alpha=0.7)
+        plt.title("Residuals (Actual - Predicted)")
+
+        plt.tight_layout()
+        plt.show()
     
 #end class

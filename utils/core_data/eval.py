@@ -17,15 +17,15 @@ def generate_wave_samples():
 
 class TreeData:
     
-    def __init__(self, csv_file='utils/core_data/updated_audio_color_data.csv'):
+    def __init__(self, csv_file='utils/core_data/audio_color_data.csv'):
         self.data = csv_file
     
     def load_data(self):
         
         try:
-            df = pd.read_csv(self.data, index_col=0)
-            #df = df.reset_index()
-            print(df.head())
+            df = pd.read_csv(self.data, header=0)
+            #print(df.columns)
+            #print(df.head())
             
             return df
             
@@ -51,7 +51,7 @@ class TreeData:
         y = data_frame[target_vars]
         
         x_train, x_test, y_train, y_test = train_test_split(
-            x, y, test_size=0.1, random_state=100)
+            x, y, test_size=0.1, random_state=93)
         
         return x, y, x_train, x_test, y_train, y_test 
     # end def
