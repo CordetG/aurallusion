@@ -43,7 +43,7 @@ class TreeData:
         y = data_frame[target_vars]
         
         x_train, x_test, y_train, y_test = train_test_split(
-        x, y, test_size=0.1, random_state=100)
+            x, y, test_size=0.1, random_state=100)
         
         return x, y, x_train, x_test, y_train, y_test 
     # end def
