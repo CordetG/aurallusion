@@ -17,12 +17,15 @@ def generate_wave_samples():
 
 class TreeData:
     
-    def __init__(self, csv_file='./audio_color_data.csv'):
+    def __init__(self, csv_file='utils/core_data/updated_audio_color_data.csv'):
         self.data = csv_file
     
     def load_data(self):
+        
         try:
-            df = pd.read_csv(self.data)
+            df = pd.read_csv(self.data, index_col=0)
+            #df = df.reset_index()
+            print(df.head())
             
             return df
             
@@ -37,7 +40,12 @@ class TreeData:
     # features = ['soundFreq','octave','note']
     # target_vars = ['r','g','b']
     # features/target = 1d array -> x/y = 2d array
-    def split_dataset(self, data_frame, features, target_vars):
+    def split_dataset(
+        self, 
+        data_frame: pd.DataFrame, 
+        features: list, 
+        target_vars: list
+    ) -> tuple:
         
         x = data_frame[features]
         y = data_frame[target_vars]

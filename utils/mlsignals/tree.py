@@ -13,6 +13,7 @@ from sklearn.multioutput import MultiOutputRegressor
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error
+import numpy as np
 
 class DecisionTreeModel:
     '''Multi-Output Decision Tree Regressor Model'''
@@ -69,14 +70,17 @@ class DecisionTreeModel:
         self.y_test = y_test
     # end def
     
+    # fitted data
     def train(self):
-        
-        self.scaled_model.fit(self.x_train, self.y_train)
+        self.scaled_data.fit(self.x_train, self.y_train)
+        print("Shape of y_train:", self.y_train.shape)
     # end def
     
+    # predict after fitting data
     def test(self):
         
-        self.predictions = self.scaled_model.predict(self.x_test)
+        self.predictions = self.scaled_data.predict(self.x_test)
+        self.predictions = np.round(self.predictions).astype(np.uint8)
     # end def
         
     def calculate_accuracy(self):
@@ -85,6 +89,8 @@ class DecisionTreeModel:
     # end def
     
     def display_results(self):
+        print('Actual values:', self.y_test)
+        print('Predicted values:', self.predictions)
         
         print('Predictions for RGB values on test data:')
         print(self.predictions)
