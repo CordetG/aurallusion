@@ -24,7 +24,7 @@ class DecisionTreeModel:
             x_train=None, y_train=None,
             x_test=None, y_test=None,
             scaled_model=None,
-            criterion='friedman_mse', random_state=93, depth=3,
+            criterion='friedman_mse', random_state=93, depth=None,
             predictions=None, mse=None
         ):
         
@@ -52,10 +52,10 @@ class DecisionTreeModel:
         ):
         
         return DecisionTreeModel(
-                    criterion=new_criterion,
-                    random_state=new_rand,
-                    depth=new_depth
-                )
+                criterion=new_criterion,
+                random_state=new_rand,
+                depth=new_depth
+            )
     # end def
     
     # Scales the data prior to training the model
@@ -82,31 +82,31 @@ class DecisionTreeModel:
     # end def
     
     # fitted data
-    def train(self):
+    def train(self) -> None:
         
         self.scaled_data.fit(self.x_train, self.y_train)
     # end def
     
     # predict after fitting data
-    def test(self):
+    def test(self) -> None:
         
         self.predictions = self.scaled_data.predict(self.x_test)
         self.predictions = np.round(self.predictions).astype(np.uint8)
     # end def
         
-    def calculate_accuracy(self):
+    def calculate_accuracy(self) -> None:
         
         self.mse = mean_squared_error(self.y_test, self.predictions)
     # end def
     
-    def display_results(self):
+    def display_results(self) -> None:
         
         print(f'Mean Squared Error (MSE) for RGB prediction: {self.mse}')
         
         self.plot_data()
     # end def
     
-    def plot_data(self):
+    def plot_data(self) -> None:
         # TODO: Find a better graph to display results & move to core_data/eval
         
         # Some matplotlib syntax help from chatGPT
@@ -127,8 +127,7 @@ class DecisionTreeModel:
         plt.title("Deltas (Actual - Predicted)")
 
         plt.tight_layout()
-        plt.show()
-        
+        plt.show()      
     # end def
     
 #end class
