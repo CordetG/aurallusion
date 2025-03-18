@@ -15,6 +15,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error
 import numpy as np
 import matplotlib.pyplot as plt
+import joblib
 
 class DecisionTreeModel:
     '''Multi-Output Decision Tree Regressor Model'''
@@ -41,6 +42,7 @@ class DecisionTreeModel:
         self.multi_model = MultiOutputRegressor(self.model)
         self.predictions = predictions
         self.mse = mse
+        self.model_file = './utils/mlsignals/trained_tree_model.pkl'
     # end __init__ def
     
     # Create new instance of the decision tree
@@ -85,6 +87,16 @@ class DecisionTreeModel:
     def train(self) -> None:
         
         self.scaled_data.fit(self.x_train, self.y_train)
+    # end def
+    
+    def save_trained_data(self):
+        
+        joblib.dump(self.scaled_data, self.model_file)
+    # end def
+    
+    def load_trained_data(self):
+        
+        return joblib.load(self.model_file)
     # end def
     
     # predict after fitting data

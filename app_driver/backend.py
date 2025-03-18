@@ -5,7 +5,7 @@
 from utils.core_data import eval
 from utils.mlsignals import tree
 
-def run_ml_utils():
+def run_ml_utils_setup():
     
     ml_data_obj = eval.TreeData()
     df = ml_data_obj.load_data()
@@ -18,6 +18,9 @@ def run_ml_utils():
     
     ml_model_obj.preprocess_data()
     ml_model_obj.train()
+    
+    ml_model_obj.save_trained_data()
+    
     ml_model_obj.test()
     ml_model_obj.calculate_accuracy()
     
@@ -25,4 +28,4 @@ def run_ml_utils():
 
 
 if __name__ == "__main__":
-    run_ml_utils()
+    run_ml_utils_setup()

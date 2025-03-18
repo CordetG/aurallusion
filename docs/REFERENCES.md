@@ -20,3 +20,4 @@
 + [Python Mock Tests](https://medium.com/analytics-vidhya/pytest-mocking-cheatsheet-dcebd84876e3)
 + [Unit Test Mock Library](https://docs.python.org/3/library/unittest.mock.html)
 + [Setup for Test Classes](https://pytest-with-eric.com/pytest-best-practices/pytest-setup-teardown/#What-is-Setup-and-Teardown)
++ [joblib library for ml training persistence](https://joblib.readthedocs.io/en/stable/)
