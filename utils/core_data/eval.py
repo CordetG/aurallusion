@@ -14,29 +14,44 @@ def save_input():
 def generate_wave_samples():
     pass
 
-# --- manage data for tree ---
-def load_data(csv_file) -> pd.DataFrame:
-    try:
-        df = pd.read_csv(csv_file)
+
+class TreeData:
+    
+    def __init__(self, csv_file='utils/core_data/audio_color_data.csv'):
+        self.data = csv_file
+    
+    def load_data(self):
         
-        return df
-        
-    except pd.errors.EmptyDataError:
-        print(f"Error: The file '{csv_file}' is empty or cannot be read.")
-        
-    return None
-# end def
+        try:
+            df = pd.read_csv(self.data, header=0)
+            
+            return df
+            
+        except pd.errors.EmptyDataError:
+            print(f"Error: The file '{self.data}' is empty or cannot be read.")
+            
+        return None
+    # end def
 
 
-# features/target = 1d array -> x/y = 2d array
-def split_dataset(data_frame, features, target_vars):
-    
-    x = data_frame[features]
-    y = data_frame[target_vars]
-    
-    x_train, x_test, y_train, y_test = train_test_split(
-    x, y, test_size=0.1, random_state=100)
-    
-    return x, y, x_train, x_test, y_train, y_test 
-# end def
-# -------
+    # data_frame -> df returned from load_data
+    # features = ['soundFreq','octave','note']
+    # target_vars = ['r','g','b']
+    # features/target = 1d array -> x/y = 2d array
+    def split_dataset(
+        self, 
+        data_frame: pd.DataFrame, 
+        features: list, 
+        target_vars: list
+    ) -> tuple:
+        
+        x = data_frame[features]
+        y = data_frame[target_vars]
+        
+        x_train, x_test, y_train, y_test = train_test_split(
+            x, y, test_size=0.1, random_state=93)
+        
+        return x, y, x_train, x_test, y_train, y_test 
+    # end def
+
+# end class
