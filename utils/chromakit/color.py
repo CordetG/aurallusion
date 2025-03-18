@@ -19,6 +19,26 @@ class Color:
         self.lum = color_attribute[2]
     # end __init__ def
     
+    def read_data(self):
+        pass
+    # end def
+    
+    def create_color(self):
+        pass
+    # end def
+    
+    def adjust_luminosity(self):
+        pass
+    # end def
+    
+    def calculate_color_with_lum(self):
+        pass
+    # end def
+    
+    def convert_to_rgb(self):
+        pass
+    # end def
+    
     def read_data():
         pass
     # end def
