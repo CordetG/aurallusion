@@ -10,6 +10,11 @@ def test_input_window_successfully_created() -> None:
     
     in_win_obj = input_window.InterfaceWindow()
     in_win_obj.create_input_window()
+    in_win_obj.display_window_title()
+    in_win_obj.display_specs()
+    #in_win_obj.read_input()
+    in_win_obj.input_box()
+    in_win_obj.window_button()
     in_win_obj.run_window()
 #end def test
 

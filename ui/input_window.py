@@ -2,6 +2,8 @@
 
 import tkinter as tk
 import tkinter.font as tkFont
+from tkinter import ttk
+import tkinter.messagebox as msgbox
 
 
 class InterfaceWindow:
@@ -10,8 +12,10 @@ class InterfaceWindow:
         self.window = tk.Tk()
         self.screen_width = self.window.winfo_screenwidth()
         self.screen_height = self.window.winfo_screenheight()
-        self.window_width = 400
-        self.window_height = 400
+        self.window_width = 450
+        self.window_height = 200
+        self.input = tk.StringVar()
+        self.frame = tk.Frame(self.window, bg='#2e2239')
     # end __init__ def
     
     # Set options for creating a gui window
@@ -24,21 +28,61 @@ class InterfaceWindow:
     # end def
 
     def display_window_title(self):
-        pass
+        self.window.title('Audio Frequency')
     # end def
+    
+    def submit(self):
+        msg = f'Frequency: {self.input.get()} Hz'
+        msgbox.showinfo(
+                title='Audio Input',
+                message=msg
+            )
+
+    
+    def window_button(self):
+        button = tk.Button(
+            master=self.frame, 
+            text='Submit',
+            font = ('calibre',11, 'bold'), 
+            activebackground='#37062e', 
+            activeforeground='white',
+            bg = 'black',
+            fg = 'white',
+            command=self.submit
+        )
+        button.pack(side = 'bottom', pady=10)
 
     # Display specifications for input
     def display_specs(self):
-        pass
+        label = tk.Label(
+            self.window, 
+            text='Enter a frequency value between 16 Hz and 7903 Hz',
+            font = ('calibre',12), 
+            fg='white',
+            bg='#2e2239'
+        )
+        label.pack(pady=10)
     # end def
 
-    def display_input_text(self):
-        pass
-    # end def
+    def input_box(self):
+        self.frame.pack(padx='5', fill='x', expand=True)
+        
+        input_label = tk.Label(
+            self.frame, 
+            text = 'Enter frequency [Hz]', 
+            font = ('calibre',11),
+            fg = 'white',
+            bg = '#19121e'
+        )
+        input_label.pack(fill='x', expand=True)
+        
+        input_entry = ttk.Entry(self.frame, textvariable=self.input)
+        input_entry.pack(fill='x', expand=True)
+        input_entry.focus()
 
     # Make sure input is valid
     def input_error(self):
-        pass
+        msgbox.showerror('Error', 'Invalid Input')
     # end def
 
     # Determine out-of-bounds values
