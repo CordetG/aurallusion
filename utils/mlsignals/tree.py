@@ -75,8 +75,7 @@ class DecisionTreeModel:
             y_train, 
             x_test, 
             y_test
-        ) -> None:
-        
+        ) -> None:        
         self.x_train = x_train
         self.y_train = y_train
         self.x_test = x_test
