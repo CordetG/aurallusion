@@ -15,8 +15,8 @@ class InterfaceWindow:
         self.window_width = 450
         self.window_height = 200
         self.input = tk.StringVar()
-        self.frame = tk.Frame(self.window)
-        self.bg =bg
+        self.bg = bg
+        self.frame = tk.Frame(self.window, bg=f'{self.bg}')
     # end __init__ def
     
     # Set options for creating a gui window
@@ -56,6 +56,18 @@ class InterfaceWindow:
             command=self.submit
         )
         button.pack(side = 'bottom', pady=10)
+        
+    def change_background(self):    
+        self.window.config(bg=f'{self.bg}')
+        
+    def color_button(self, bg):
+        self.bg = bg
+        change_button = tk.Button(
+            self.frame, 
+            text="Show Color", 
+            command=self.change_background
+        )
+        change_button.pack(pady=10)
 
     # Display specifications for input
     def display_specs(self):

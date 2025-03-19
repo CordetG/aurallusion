@@ -18,22 +18,37 @@ test_set = {
     17 : 0,
     524 : 5,
     70 : 2,
-    350 : 4
-    }
+    350 : 4,
+    2000 : 6,
+    7459 : 8,
+    450 : 4,
+    500 : 4,
+    5275 : 8
+}
 
 note_set = {
     17 : 0,
     524 : 0,
     70 : 1,
-    350 : 5
-    }
+    350 : 5,
+    2000 : 11,
+    7459 : 10,
+    450 : 9,
+    500 : 11, 
+    5275 : 4
+}
 
 file_name =  {
     17 : 'test_1',
     524 : 'test_2',
     70 : 'test_3',
-    350 : 'test_4'
-    }
+    350 : 'test_4',
+    2000 : 'test_5',
+    7459 : 'test_6',
+    450 : 'test_7',
+    500 : 'test_8',
+    5275 : 'test_9'
+}
 
 
 def run_ml_utils(model, freq, octave, note):
@@ -42,7 +57,7 @@ def run_ml_utils(model, freq, octave, note):
 
 def run_input_window() -> None:
     
-    in_win_obj = input_window.InterfaceWindow('b29bc1')
+    in_win_obj = input_window.InterfaceWindow('#b29bc1')
     in_win_obj.create_input_window()
     in_win_obj.display_window_title()
     in_win_obj.display_specs()
@@ -69,10 +84,10 @@ def run_audio(freq_input, file_name):
     wavObj.playAudio(audioData=sampleArray)
     
 def output_color(bg):
-    in_win_obj = input_window.InterfaceWindow(bg)
-    in_win_obj.create_input_window()
-    in_win_obj.display_window_title()
-    in_win_obj.run_window()
+    out_win_obj = input_window.InterfaceWindow(bg)
+    out_win_obj.create_input_window()
+    out_win_obj.display_window_title()
+    out_win_obj.run_window()
     
     
 # https://www.codespeedy.com/convert-rgb-to-hex-color-code-in-python/   
@@ -89,7 +104,5 @@ if __name__ == "__main__":
     r, g, b = run_ml_utils(model, frequency, test_set[frequency], note_set[frequency])
     hex = matplotlib.colors.to_hex([ r/255, g/255, b/255 ])
     
-    
-    output_color(hex)
-    
     run_audio(frequency, file_name[frequency])
+    output_color(str(hex))
