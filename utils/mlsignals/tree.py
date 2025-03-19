@@ -13,17 +13,19 @@ from sklearn.multioutput import MultiOutputRegressor
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error
+import numpy as np
+import matplotlib.pyplot as plt
+import joblib
 
 class DecisionTreeModel:
     '''Multi-Output Decision Tree Regressor Model'''
     
-    # Random state set to 100 for reproducibility
     def __init__(
             self, 
             x_train=None, y_train=None,
             x_test=None, y_test=None,
             scaled_model=None,
-            criterion='friedman_mse', random_state=100, depth=3,
+            criterion='friedman_mse', random_state=93, depth=None,
             predictions=None, mse=None
         ):
         
@@ -40,16 +42,22 @@ class DecisionTreeModel:
         self.multi_model = MultiOutputRegressor(self.model)
         self.predictions = predictions
         self.mse = mse
+        self.model_file = './utils/mlsignals/trained_tree_model.pkl'
     # end __init__ def
     
     # Create new instance of the decision tree
-    def new_model(self, new_criterion, new_rand, new_depth):
+    def new_model(
+            self, 
+            new_criterion, 
+            new_rand, 
+            new_depth
+        ):
         
         return DecisionTreeModel(
-                    criterion=new_criterion,
-                    random_state=new_rand,
-                    depth=new_depth
-                )
+                criterion=new_criterion,
+                random_state=new_rand,
+                depth=new_depth
+            )
     # end def
     
     # Scales the data prior to training the model
@@ -61,35 +69,81 @@ class DecisionTreeModel:
                     ])
     # end def
     
-    def read_data(self, x_train, y_train, x_test, y_test):
-        
+    def read_data(
+            self, 
+            x_train, 
+            y_train, 
+            x_test, 
+            y_test
+        ) -> None:        
         self.x_train = x_train
         self.y_train = y_train
         self.x_test = x_test
         self.y_test = y_test
     # end def
     
-    def train(self):
+    # fitted data
+    def train(self) -> None:
         
-        self.scaled_model.fit(self.x_train, self.y_train)
+        self.scaled_data.fit(self.x_train, self.y_train)
     # end def
     
-    def test(self):
+    def save_trained_data(self):
         
-        self.predictions = self.scaled_model.predict(self.x_test)
+        joblib.dump(self.scaled_data, self.model_file)
     # end def
+    
+    def load_trained_data(self):
         
-    def calculate_accuracy(self):
+        return joblib.load(self.model_file)
+    # end def
+    
+    # predict after fitting data
+    def test(self) -> None:
+        
+        self.predictions = self.scaled_data.predict(self.x_test)
+        self.predictions = np.round(self.predictions).astype(np.uint8)
+
+    # end def
+    
+    def predict_rgb(self, freq, octave, note):
+        pass
+        
+        
+    def calculate_accuracy(self) -> None:
         
         self.mse = mean_squared_error(self.y_test, self.predictions)
     # end def
     
-    def display_results(self):
-        
-        print('Predictions for RGB values on test data:')
-        print(self.predictions)
+    def display_results(self) -> None:
         
         print(f'Mean Squared Error (MSE) for RGB prediction: {self.mse}')
+        
+        self.plot_data()
+    # end def
+    
+    def plot_data(self) -> None:
+        # TODO: Find a better graph to display results & move to core_data/eval
+        
+        # Some matplotlib syntax help from chatGPT
+        plt.figure(figsize=(12, 6))
+
+        # x-axes = 'r','g','b' values between 0-255
+        # y-axes = frequency of certain values occur
+        plt.subplot(1, 2, 1)
+        plt.hist(self.y_test.to_numpy().ravel(), bins=50, color='blue', alpha=0.5, label="Actual")
+        plt.hist(self.predictions.ravel(), bins=50, color='red', alpha=0.5, label="Predicted")
+        plt.legend()
+        plt.title("Distribution of Actual vs Predicted Values")
+
+        plt.subplot(1, 2, 2)
+        # Check the delta (difference between actual and predicted)
+        deltas = self.y_test - self.predictions
+        plt.hist(deltas.to_numpy().ravel(), bins=50, color='green', alpha=0.7)
+        plt.title("Deltas (Actual - Predicted)")
+
+        plt.tight_layout()
+        plt.show()      
     # end def
     
 #end class
