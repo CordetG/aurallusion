@@ -16,6 +16,7 @@
 
 ### Secondary Features
 
++ Outputs a collection of colors from multiple sounds
 + Outputs a specific size of the visual based on volume
 + Outputs a certain shape based on the wave type
 + The machine learning algorithm uses a decision forest to create more detailed associations
@@ -26,6 +27,12 @@
 + The input can include full songs with many different combinations of sounds
 + The ouput can portray an abstract visual with many combinations of sounds as many different colors and shapes
 + The program can be developed to create a visual output during musical performances which may be helpful for people who have hearing impairment to experience and enjoy musical performances.
+
+## Strategy Notes
+
++ Displaying a collection of colors from multiple sounds
+  + Have a data structure to store sound input data and color output data in each node
+  + Display the data from each node of the entire data structure -- showing the different color outputs as a collection
 
 ## User Stories
 

@@ -125,6 +125,7 @@ r,g,b,soundFreq,octave,note,noteClass,audioClass
 191,29,255,7040,8,9,A,highTreble
 199,58,255,7458.62,8,10,A#,highTreble
 207,86,255,7902.13,8,11,B,highTreble
+8,0,0,8.72,0,nanote,lowBass
 23,0,0,16.84,0,0,C,lowBass
 38,0,0,17.84,0,1,C#,lowBass
 54,0,0,18.97,0,2,D,lowBass

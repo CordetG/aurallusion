@@ -1,0 +1,26 @@
+#!/usr/bin/python3
+
+import pytest
+import unittest
+from ui import input_window
+import tkinter as tk
+
+
+def test_input_window_successfully_created() -> None:
+    
+    in_win_obj = input_window.InterfaceWindow()
+    in_win_obj.create_input_window()
+    in_win_obj.display_window_title()
+    in_win_obj.display_specs()
+    #in_win_obj.read_input()
+    in_win_obj.input_box()
+    in_win_obj.window_button()
+    in_win_obj.run_window()
+#end def test
+
+# Run Testing
+# In root directory, run python3 -m tests.test_ui
+if __name__ == "__main__":
+    test_input_window_successfully_created() 
+    print("UI Testing Passed!")
+# end if
