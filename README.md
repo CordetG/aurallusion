@@ -35,6 +35,11 @@
 [4. LICENSE](#license)
 
 <!-- omit in toc -->
+## Demonstration
+
+https://github.com/user-attachments/assets/21e6cf97-6356-4b5e-9a3f-00b679fd664c
+
+<!-- omit in toc -->
 ## Description
 
 Aurallusion is an audio visualization tool that incorporates multiple functionalites. In effort to use different components of sound data, the program has implemented methods to extract and evaluate audio data, such as pitch. Foundationally, Aurallusion is using frequency and pitch as audio components extracted from .wav files. The heart of aurallusion uses a decision tree machine learning algorithm to take in audio data.
