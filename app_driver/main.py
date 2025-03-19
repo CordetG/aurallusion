@@ -13,7 +13,6 @@ def main() -> int:
     return 0
 
 # end main
-
 test_set = {
     17 : 0,
     524 : 5,

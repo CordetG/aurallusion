@@ -104,7 +104,12 @@ class DecisionTreeModel:
         
         self.predictions = self.scaled_data.predict(self.x_test)
         self.predictions = np.round(self.predictions).astype(np.uint8)
+
     # end def
+    
+    def predict_rgb(self, freq, octave, note):
+        pass
+        
         
     def calculate_accuracy(self) -> None:
         

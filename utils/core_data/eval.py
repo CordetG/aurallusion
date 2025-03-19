@@ -14,7 +14,6 @@ def save_input():
 def generate_wave_samples():
     pass
 
-
 def find_pitch_and_note(frequency):
     pass
 
