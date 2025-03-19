@@ -8,14 +8,15 @@ import tkinter.messagebox as msgbox
 
 class InterfaceWindow:
     
-    def __init__(self) -> None:
+    def __init__(self, bg) -> None:
         self.window = tk.Tk()
         self.screen_width = self.window.winfo_screenwidth()
         self.screen_height = self.window.winfo_screenheight()
         self.window_width = 450
         self.window_height = 200
         self.input = tk.StringVar()
-        self.frame = tk.Frame(self.window, bg='#2e2239')
+        self.frame = tk.Frame(self.window)
+        self.bg =bg
     # end __init__ def
     
     # Set options for creating a gui window
@@ -24,12 +25,16 @@ class InterfaceWindow:
         center_y = int(self.screen_height/2 - self.window_height/2)
         
         self.window.geometry(f'{self.window_width}x{self.window_height}+{center_x}+{center_y}')
-        self.window.configure(bg='#2e2239')
+        self.window.configure(bg=f'{self.bg}')
     # end def
 
     def display_window_title(self):
         self.window.title('Audio Frequency')
     # end def
+    
+    def copy_input(self):
+        freq_input = self.input.get()
+        return freq_input
     
     def submit(self):
         msg = f'Frequency: {self.input.get()} Hz'

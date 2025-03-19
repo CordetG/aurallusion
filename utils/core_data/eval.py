@@ -15,6 +15,9 @@ def generate_wave_samples():
     pass
 
 
+def find_pitch_and_note(frequency):
+    pass
+
 class TreeData:
     
     def __init__(self, csv_file='utils/core_data/audio_color_data.csv'):
